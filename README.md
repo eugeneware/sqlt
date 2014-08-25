@@ -116,7 +116,7 @@ queries.getUsersByIdOrEmail(conn, [1234, 'bob@hotmail.com'], function (err, resu
 ### Streaming support
 
 By not passing through a callback the query functions will return streams
-(depends on the underlying database library).
+(depends on the underlying database library - eg below is for [mysql](http://npmjs.org/mysql)).
 
 Given a SQL template file located in /path/to/queries/getUsersByIdOrEmail.sql
 
@@ -143,7 +143,7 @@ var conn = mysql.createConnection({
 });
 
 var getUsersByIdOrEmail = sqlt('/path/to/queries/getUsersByIdOrEmail.sql');
-var stream = getUsersByIdOrEmail(conn, [1234, 'bob@hotmail.com']);
+var stream = getUsersByIdOrEmail(conn, [1234, 'bob@hotmail.com']).stream();
 stream.on('data', console.log);
 // stream.pipe()
 ```
