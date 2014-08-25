@@ -1,0 +1,23 @@
+{
+  "name": "sqlt",
+  "version": "1.0.0",
+  "description": "Simple SQL Templating helper inspired by Yesql",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eugeneware/sqlt"
+  },
+  "keywords": ["sql","yesql","presql","template","file","database","mysql","pg","postgres","postgresql","mysql","orm"],
+  "author": "Eugene Ware <eugene@noblesamurai.com>",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/eugeneware/sqlt/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "expect.js": "~0.2.0",    "mocha": "~1.17.0"
+  }
+}
