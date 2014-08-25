@@ -113,4 +113,40 @@ queries.getUsersByIdOrEmail(conn, [1234, 'bob@hotmail.com'], function (err, resu
 });
 ```
 
+### Streaming support
+
+By not passing through a callback the query functions will return streams
+(depends on the underlying database library).
+
+Given a SQL template file located in /path/to/queries/getUsersByIdOrEmail.sql
+
+``` sql
+SELECT
+  *
+FROM
+  users
+WHERE
+  id = ? OR email = ?;
+```
+
+You can get the stream by not passing through a callback:
+
+``` js
+var sqlt = require('sqlt'),
+    mysql = require('mysql');
+
+var conn = mysql.createConnection({
+  host: 'yourdatabase.com',
+  database: 'yourdbname',
+  user: 'yourdbusername',
+  password: 'yourpassword'
+});
+
+var getUsersByIdOrEmail = sqlt('/path/to/queries/getUsersByIdOrEmail.sql');
+var stream = getUsersByIdOrEmail(conn, [1234, 'bob@hotmail.com']);
+stream.on('data', console.log);
+// stream.pipe()
+```
+
+
 ### Pull Requests Welcome!

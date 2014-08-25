@@ -3,11 +3,16 @@ var fs = require('fs'),
 
 function makeSql(stmt) {
   return function (conn, params, cb) {
-    if (typeof cb == 'undefined') {
+    if (typeof cb === 'undefined' && typeof params === 'function') {
       cb = params;
       params = [];
     }
-    conn.query(stmt, params, cb);
+    if (typeof cb === 'undefined') {
+      // for piping
+      return conn.query(stmt, params);
+    } else {
+      conn.query(stmt, params, cb);
+    }
   };
 }
 
