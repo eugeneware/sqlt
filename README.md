@@ -77,7 +77,7 @@ var conn = mysql.createConnection({
 });
 
 var getUsersByIdOrEmail = sqlt('/path/to/queries/getUsersByIdOrEmail.sql');
-getUsersByIdOrEmail(conn, function (err, results) {
+getUsersByIdOrEmail(conn, [1234, 'bob@hotmail.com'], function (err, results) {
   if (err) throw err;
   console.log(results);
 });
@@ -107,7 +107,7 @@ queries.getUsers(conn, function (err, results) {
   if (err) throw err;
   console.log(results);
 });
-queries.getUsersByIdOrEmail(conn, function (err, results) {
+queries.getUsersByIdOrEmail(conn, [1234, 'bob@hotmail.com'], function (err, results) {
   if (err) throw err;
   console.log(results);
 });
